@@ -1,0 +1,32 @@
+{
+  "name": "challenges_dev",
+  "version": "1.0.0",
+  "description": "two challenges for fullStack position  ",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielachacond/challenges_dev.git"
+  },
+  "keywords": [
+    "challenge"
+  ],
+  "author": "Gabriela Chacon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabrielachacond/challenges_dev/issues"
+  },
+  "homepage": "https://github.com/gabrielachacond/challenges_dev#readme",
+  "devDependencies": {
+    "jest": "^29.6.4",
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "https": "^1.0.0"
+  }
+}
