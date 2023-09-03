@@ -1,23 +1,21 @@
 const express = require("express");
 const router = express.Router();
 const validator = require("../../middlewares/validator")
-const {postFieldValidator} = require("../../validator/field-validator")
+const { postFieldValidator, postNonConstructibleChangeValidator } = require("../../validator/field-validator")
+const { ControllerNonConstructibleChange } = require("../../controller")
 
 
 router.post(
-   "/challenge/smallest-difference",
-   //postFieldValidator,
-   //validator,
-   (req, res) => {
-    res.send('prueba challenge smallest-difference')
-  });
-
-  router.post(
-    "/challenge/non-constructible-change",
+    "/challenge/smallest-difference",
     //postFieldValidator,
     //validator,
-    (req, res) => {
-     res.send('prueba challenge non-constructible-change')
-   });
-  
+)
+
+router.post(
+    "/challenge/non-constructible-change",
+    postNonConstructibleChangeValidator,
+    validator,
+    ControllerNonConstructibleChange.handler.bind(ControllerNonConstructibleChange)
+);
+
 module.exports = router;

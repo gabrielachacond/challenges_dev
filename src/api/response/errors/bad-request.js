@@ -8,13 +8,14 @@ class BadRequest {
 	}
 
 	getResponse() {
+
 		return {
 			statusCode: this.__code,
 			headers: { "Access-Control-Allow-Origin": "*" },
 			body: { message: this.__message, error_code: this.__error_code, details: this.__details },
 		};
 	}
-s
+
 	setDetails(details) {
 		this.__details = details;
 	}

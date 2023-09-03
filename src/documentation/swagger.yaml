@@ -1,0 +1,155 @@
+---
+openapi: 3.0.2
+
+info:
+  title: challenge full stack
+  version: 1.0.0
+  description: "Group of APIs that will expose apis for matrix calculation"
+  contact:
+    name: API Challenge
+    url: https://github.com/gabrielachacond/challenges_dev
+    email: gabrielachacond@gmail.com
+
+paths:
+  /challenge/smallest-difference:
+    description: "Endpoint for the smallest difference between two arrays of integers"
+    post:
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - "challenge"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/requestBodySmallestDifference"
+        required: true
+      summary: Calculate smallest difference between two arrays of integers
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/responseBodySmallestDifference"
+          description: expected response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+              examples:
+                REQUIRED_FIELD:
+                  value:
+                    message: The request performed is not supported.
+                    error_code: invalid_request
+                    details:
+                      array_one: The field array_one is required
+                      array_two: The field array_two is required
+
+
+
+  /challenge/non-constructible-change:
+    description: "Endpoint for the minimum amount of change that you can’t create given array"
+    post:
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - "challenge"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/requestBodyNonConstructibleChange"
+        required: true
+      summary: Calculate the minimum amount of change that you can’t create given array of integers
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/responseBodyNonConstructibleChange"
+          description: expected response
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequest"
+              examples:
+                REQUIRED_FIELD:
+                  value:
+                    message: The request performed is not supported.
+                    error_code: invalid_request
+                    details:
+                      coins: The field coins is required
+
+          description: Bad Request
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: client_id
+  schemas:
+    BadRequest:
+      title: BadRequest
+      description: The request is not compatible.
+      required:
+        - error_code
+        - message
+      type: object
+      properties:
+        error_code:
+          type: string
+          example: invalid_request
+        message:
+          type: string
+          example: The request performed is not supported.
+        details:
+          type: object
+          example: 
+            idempotency_key: "The field 'idempotency_key' is required"
+
+    requestBodyNonConstructibleChange:
+          title: requestBody Non Constructible Change
+          required:
+            - coins
+          type: object
+          properties:
+            coins:
+              type: array
+              example: [1,2,3]
+
+    requestBodySmallestDifference:
+          title: requestBody Smallest Difference
+          required:
+            - array_one
+            - array_two
+          type: object
+          properties:
+            array_one:
+              type: array
+              example: [1,2,3]
+            array_two:
+              type: array
+              example: [1,2,3]
+
+    responseBodyNonConstructibleChange:
+          title: responseBody Non Constructible Change
+          required:
+            - result
+          type: object
+          properties:
+            coins:
+              type: string
+              example: "The minimum amount of change that you cannot create is: 5"
+
+    responseBodySmallestDifference:
+          title: responseBody Smallest Difference
+          required:
+            - result
+          type: object
+          properties:
+            coins:
+              type: string
+              example: "The smallest difference is: 10"
+  
