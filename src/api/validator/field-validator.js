@@ -3,6 +3,7 @@ const { body } = require("express-validator");
 
 module.exports = {
     postFieldValidator: [
+        // TO DO: verif this validations
         body("array_one")
             .notEmpty()
             .withMessage("the field array_one is required")
@@ -25,10 +26,10 @@ module.exports = {
         ,
         body("array_two")
             .notEmpty()
-            .withMessage("the field array_one is required")
+            .withMessage("the field array_two is required")
             .bail()
             .isArray()
-            .withMessage("the field array_one must be an Array")
+            .withMessage("the field array_two must be an Array")
             .bail()
             .custom((array) => {
                 if (array.Length > 0) {

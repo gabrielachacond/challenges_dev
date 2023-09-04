@@ -3,12 +3,14 @@ const router = express.Router();
 const validator = require("../../middlewares/validator")
 const { postFieldValidator, postNonConstructibleChangeValidator } = require("../../validator/field-validator")
 const { ControllerNonConstructibleChange } = require("../../controller")
+const {ControllerSmallestDifference} = require("../../controller")
 
 
 router.post(
     "/challenge/smallest-difference",
-    //postFieldValidator,
-    //validator,
+    postFieldValidator,
+    validator,
+    ControllerSmallestDifference.handler.bind(ControllerSmallestDifference)
 )
 
 router.post(
