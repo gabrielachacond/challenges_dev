@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express()
 const cors = require("cors");
+const path = require('path');
 const port = 3000;
-
+const exphbs = require('express-handlebars');
 const mainRoute = require('./api/route')
 
 const middlewares = [
@@ -12,6 +13,17 @@ const middlewares = [
 ];
 
 app.use(middlewares);
+
+app.set('views', path.join(__dirname, 'views'));
+app.engine(
+  'hbs',
+  exphbs.engine({
+    defaultLayout: 'main',
+    layoutsDir: path.join(app.get('views'),'layouts'),
+    partialsDir: path.join(app.get('views'),'partials'),
+    extname: 'hbs',
+  }),
+);
 
 // invocation of route
 app.use("/", mainRoute);

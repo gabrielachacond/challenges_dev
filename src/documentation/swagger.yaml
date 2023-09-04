@@ -45,6 +45,7 @@ paths:
                     details:
                       array_one: The field array_one is required
                       array_two: The field array_two is required
+          description: Bad Request
 
 
 
