@@ -1,4 +1,30 @@
-function sendForm() {
+
+function sendForm(event) {
+    event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+
+    const fieldArray1 = document.getElementById("array_one").value;
+    const fieldArray2 = document.getElementById("array_two").value;
+
+    const regex = /^(\d+,)*\d+$/;
+
+    if (regex.test(fieldArray1) && regex.test(fieldArray2)) {
+        const valueArray1 = fieldArray1.split(",").map(Number);
+        const valueArray2 = fieldArray2.split(",").map(Number);
+
+        console.log(valueArray1, valueArray2);
+
+        // Aquí puedes enviar los arrays en el cuerpo de una petición HTTP
+    } else {
+        alert("Por favor, ingrese valores numéricos separados por comas.");
+    }
+}
+
+// Añadir un event listener al formulario
+document.getElementById("send-form").addEventListener("submitButton", sendForm);
+
+
+
+/* function sendForm() {
 
   const fieldArray1 = document.getElementById("array_one").value;
   const fieldArray2 = document.getElementById("array_Two").value;
@@ -13,7 +39,7 @@ function sendForm() {
   } else {
     alert("Por favor, ingrese valores numéricos separados por comas.");
   }
-}
+} */
 /*
 
 ¿por que me falla el front?
