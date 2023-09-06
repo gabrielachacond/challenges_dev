@@ -1,6 +1,5 @@
 const { body } = require("express-validator");
 
-
 module.exports = {
     postFieldValidator: [
         // TO DO: verif this validations

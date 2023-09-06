@@ -1,4 +1,3 @@
-
 class BadRequest {
 	constructor() {
 		this.__code = 400;

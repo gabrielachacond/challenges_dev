@@ -14,6 +14,10 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 
+### `Web interface to run the solution`
+
+http://localhost:3000/home
+
 
 ----
 
